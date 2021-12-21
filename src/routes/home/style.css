@@ -1,0 +1,11 @@
+.app {
+	height: 100vh;
+}
+
+.home {
+	padding: 80px 20px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}

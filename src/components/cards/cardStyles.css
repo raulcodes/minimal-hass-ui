@@ -1,0 +1,28 @@
+.card21 {
+  position: relative;
+  height: 30vh;
+  width: 62vh;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 1vh;
+  display: flex;
+}
+
+.card11 {
+  position: relative;
+  height: 30vh;
+  width: 30vh;
+  border-radius: 25px 40px 25px 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 1vh;
+  border: 4px solid var(--main);
+}
+
+.off {
+  background-color: rgba(0,0,0,0);
+}
+
+.on {
+  background-color: var(--main);
+  color: var(--accent-light);
+}

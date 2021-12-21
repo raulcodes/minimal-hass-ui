@@ -1,0 +1,19 @@
+.weatherIcon {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.weatherState {
+  margin-top: 12px;
+}
+
+.currentTemp {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  font-size: 4rem;
+  margin: 12px 0 0 36px;
+}
