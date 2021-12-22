@@ -1,23 +1,15 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { route } from 'preact-router';
-import style from './style.css';
-import Weather from '../../components/cards/weather/Weather';
-import Light from '../../components/cards/light';
-import connect from '../../utils/websocketClient';
+import { subscribeEntities } from "home-assistant-js-websocket";
+import Dashboard from '../../components/dashboard';
 
-import { weatherDataOne, weatherDataTwo } from '../../utils/mocks/weatherEntity';
-import { lightOne, lightTwo } from '../../utils/mocks/lightEntity';
-
-const Home = () => {
-	return(
-		<div class={style.home}>
-			<Weather data={JSON.parse(weatherDataOne)} />
-			<Light data={JSON.parse(lightOne)} />
-			<Light data={JSON.parse(lightTwo)} />
-			<Weather data={JSON.parse(weatherDataTwo)} />
-		</div>
-	);
+const Home = ({ connection }) => {
+	const [entities, setEntities] = useState({});
+	useEffect(() => (Object.keys(connection).length === 0) ? route('/auth') : (
+		subscribeEntities(connection, (ent) => setEntities(ent))
+	), []);
+	return(<Dashboard entities={entities} />);
 };
 
 export default Home;

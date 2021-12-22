@@ -30,7 +30,7 @@ const WeatherIcon = ({ type, size }) => {
     case 'lightning':
       icon = <Lightning size={size} />
       break;
-    case 'partly-cloudy':
+    case 'partlycloudy':
       icon = <PartlyCloudy size={size} />
       break;
     case 'pouring':
