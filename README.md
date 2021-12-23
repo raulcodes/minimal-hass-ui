@@ -1,5 +1,7 @@
 # hass-minimal-ui
 
+<img width="764" alt="Screen Shot 2021-12-20 at 10 20 41 PM" src="https://user-images.githubusercontent.com/10414043/146870712-35f8f948-fbae-4b98-b46f-fd63187bb618.png">
+
 ## CLI Commands
 
 ``` bash
