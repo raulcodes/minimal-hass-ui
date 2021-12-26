@@ -13,8 +13,8 @@ const App = () => {
 
 	return(
 		<div class={style.app}>
-			<Router onChange={() => {}}>
-				<Home  path="/" connection={connection} />
+			<Router>
+				<Home  path="/" connection={{}} />
 				<Icons path="/icons" />
 				<Auth  path="/auth" setConnection={setConnection} />
 			</Router>

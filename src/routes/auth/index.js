@@ -42,10 +42,12 @@ const Auth = ({ setConnection }) => {
   const submitInput = () => getAuth({ hassUrl: hostUrl, saveTokens, loadTokens });
 	return(
 		<div class={style.auth}>
-      <h2>Enter the host you would like to connect to</h2>
-      <div class={style.input}>
-			  <input class={style.hostInput} onChange={e => setHostUrl(e.target.value)} value={hostUrl}></input>
-        <button class={style.hostSubmit} onClick={submitInput}>Submit</button>
+      <div>
+        <h2>Enter the host you would like to connect to</h2>
+        <div class={style.input}>
+			    <input class={style.hostInput} onChange={e => setHostUrl(e.target.value)} value={hostUrl}></input>
+          <button class={style.hostSubmit} onClick={submitInput}>Submit</button>
+        </div>
       </div>
 		</div>
 	);
