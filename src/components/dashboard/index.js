@@ -3,8 +3,8 @@ import style from './style.css';
 import Weather from '../../components/cards/weather/Weather';
 import Light from '../../components/cards/light';
 
-import { weatherDataOne, weatherDataTwo } from '../../utils/mocks/weatherEntity';
-import { lightOne, lightTwo } from '../../utils/mocks/lightEntity';
+// import { weatherDataOne, weatherDataTwo } from '../../utils/mocks/weatherEntity';
+// import { lightOne, lightTwo } from '../../utils/mocks/lightEntity';
 import { useEffect, useState } from 'preact/hooks';
 
 const Dashboard = ({ entities, config }) => {

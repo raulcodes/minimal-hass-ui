@@ -12,7 +12,7 @@ const Icons = () => (
     <WeatherIcon type="hail" size={80} />
     <WeatherIcon type="lightning-rainy" size={80} />
     <WeatherIcon type="lightning" size={80} />
-    <WeatherIcon type="partly-cloudy" size={80} />
+    <WeatherIcon type="partlycloudy" size={80} />
     <WeatherIcon type="pouring" size={80} />
     <WeatherIcon type="rainy" size={80} />
     <WeatherIcon type="sunny" size={80} />

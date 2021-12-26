@@ -13,7 +13,7 @@ const Weather = ({ data }) => {
   return(
     <div class={`${cardStyle.card11} ${cardStyle.on}`}>
       <div class={style.weatherIcon}>
-        <WeatherIcon type={data?.state} size={60} />
+        <WeatherIcon type={data?.state} size={80} />
         <span class={style.weatherState}>{capitalizedState}</span>
       </div>
       <span class={style.currentTemp}>{Math.round(temp)}°</span>

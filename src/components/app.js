@@ -1,6 +1,6 @@
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { Router, route } from 'preact-router';
+import { useState } from 'preact/hooks';
+import { Router } from 'preact-router';
 import style from './dashboard/style.css';
 
 // Code-splitting is automated for `routes` directory
@@ -14,7 +14,7 @@ const App = () => {
 	return(
 		<div class={style.app}>
 			<Router>
-				<Home  path="/" connection={{}} />
+				<Home  path="/" connection={connection} />
 				<Icons path="/icons" />
 				<Auth  path="/auth" setConnection={setConnection} />
 			</Router>

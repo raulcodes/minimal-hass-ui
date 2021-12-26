@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import { subscribeEntities, subscribeConfig } from "home-assistant-js-websocket";
 import Dashboard from '../../components/dashboard';
@@ -10,14 +10,12 @@ const Home = ({ connection }) => {
 	}
 
 	const [entities, setEntities] = useState({});
-	subscribeEntities(connection, (ent) => {
-		console.log(ent);
-		return setEntities(ent);
-	});
+	subscribeEntities(connection, (ent) => setEntities(ent));
+
 	const [config, setConfig] = useState({});
 	subscribeConfig(connection, (config) => setConfig(config));
 
-	return(<Dashboard entities={{}} config={{}} />);
+	return(<Dashboard entities={entities} config={config} />);
 };
 
 export default Home;
