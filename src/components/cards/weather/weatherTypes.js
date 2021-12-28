@@ -1,5 +1,5 @@
 const conditions = {
-  'clear-night: 'c',
+  'clear-night': 'c',
   'cloudy': 'c',
   'fog': 'c',
   'hail': 'c',

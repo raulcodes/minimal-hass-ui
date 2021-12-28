@@ -1,19 +1,9 @@
-.weatherIcon {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  display: flex;
-  flex-direction: column;
-}
-
 .weatherState {
-  margin-top: 12px;
+  font-size: 25%;
+  fill: var(--accent-light);
 }
 
 .currentTemp {
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
-  font-size: 4rem;
-  margin: 12px 0 0 36px;
+  font-size: 70%;
+  fill: var(--accent-light);
 }
