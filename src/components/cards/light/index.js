@@ -2,13 +2,14 @@ import { h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { randomIntFromInterval } from '../../../utils/utils';
 
-import Name from '../switch/Name';
-// import SwitchUI from './SwitchUI';
+import Brightness from './Brightness';
+import LightIcon from './LightIcon';
+import Name from './Name';
 
 import cardStyle from '../cardStyles.css';
 
 const Light = ({ data }) => {
-  const borderRadius = useMemo(() => `cardB${randomIntFromInterval(1, 4)}`, [data]);
+  const borderRadius = useMemo(() => `cardB${randomIntFromInterval(1, 4)}`, []);
 
   const [brightness, setBrightness] = useState(0);
   const [state, setState] = useState(false);
@@ -30,21 +31,21 @@ const Light = ({ data }) => {
     } else {
       setName(entity_id);
     }
-  }, []);
+  }, [data]);
 
   return(
     <div
       onClick={() => setState(s => !s)}
       class={`
         ${cardStyle.card11} 
-        ${state ? cardStyle.on : cardStyle.off}
         ${cardStyle[borderRadius]}
       `}
-      style={brightness ? { background: `linear-gradient(0deg, #14151a ${brightness}%, #5c7985 ${100 - brightness}%)` } : null}
+      style={brightness && state ? { background: `linear-gradient(0deg, #14151a ${brightness}%, #5c7985 1%)` } : null}
     >
       <svg viewBox='0 0 50 50'>
-        {/* <SwitchUI state={state} /> */}
-        <Name name={name} state={state} />
+        <Name>{name}</Name>
+        {state ? <Brightness>{brightness}%</Brightness> : null }
+        <LightIcon state={state} />
       </svg>
     </div>
   )

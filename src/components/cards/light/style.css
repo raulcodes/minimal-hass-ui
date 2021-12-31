@@ -1,0 +1,17 @@
+.name {
+  font-size: 6px;
+  color: var(--accent-light);
+}
+
+.brightness {
+  font-size: 5px;
+  color: var(--accent-light);
+}
+
+.active {
+  fill: var(--accent-light);
+}
+
+.inactive {
+  fill: var(--text);
+}
