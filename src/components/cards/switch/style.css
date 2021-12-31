@@ -1,0 +1,46 @@
+.name {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  max-width: 65%;
+  font-size: 2em;
+}
+
+.name::after {
+  color: var(--accent-light);
+  mix-blend-mode: difference;
+}
+
+.name1 {
+  font-size: 6px;
+  fill: var(--text);
+}
+
+.nameActive {
+  fill: var(--accent-light);
+}
+
+.switch {
+  x: 27px;
+  y: 34px;
+  rx: 12%;
+  width: 18px;
+  height: 12px; 
+  fill: var(--accent-light);
+}
+
+.switchInactive {
+  fill: var(--main);
+}
+
+.switchCircle {
+  cx: 33px;
+  cy: 40px;
+  r: 5px;
+  fill: var(--accent);
+}
+
+.switchStateActive {
+  transform: translateX(6px);
+  /* cubic-bezier(.65,.03,.83,.67) */
+}

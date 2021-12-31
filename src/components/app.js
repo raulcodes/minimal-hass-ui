@@ -7,6 +7,7 @@ import style from './dashboard/style.css';
 import Home from '../routes/home';
 import Icons from '../routes/icons';
 import Auth from '../routes/auth';
+import MockDashboard from '../routes/mock-dashboard';
 
 const App = () => {
 	const [connection, setConnection] = useState({});
@@ -17,6 +18,7 @@ const App = () => {
 				<Home  path="/" connection={connection} />
 				<Icons path="/icons" />
 				<Auth  path="/auth" setConnection={setConnection} />
+				<MockDashboard path="/mock" />
 			</Router>
 		</div>
 	);

@@ -1,25 +1,27 @@
 import { h } from 'preact';
 import style from './style.css';
-import Weather from '../../components/cards/weather/Weather';
-import Light from '../../components/cards/light';
 
-// import { weatherDataOne, weatherDataTwo } from '../../utils/mocks/weatherEntity';
-// import { lightOne, lightTwo } from '../../utils/mocks/lightEntity';
+import Light from '../cards/light';
+import Switch from '../cards/switch';
+import Weather from '../cards/weather/Weather';
+
 import { useEffect, useState } from 'preact/hooks';
 
 const Dashboard = ({ entities, config }) => {
-  console.log(config);
-  const lightR = new RegExp('^light\.');
   const switchR = new RegExp('^switch\.');
-
+  const lightR = new RegExp('^light\.');
+  
   const [lights, setLights] = useState([]);
+  const [switches, setSwitches] = useState([]);
   useEffect(() => {
-    setLights(Object.keys(entities).filter(e => lightR.test(e) || switchR.test(e)));
+    setSwitches(Object.keys(entities).filter(e => switchR.test(e)));
+    setLights(Object.keys(entities).filter(e => lightR.test(e)));
   }, [entities]);
 
 	return(
 		<div class={style.home}>
 			<Weather data={entities['weather.home']} />
+      {switches.map(s => <Switch data={entities[s]} />)}
       {lights.map(l => <Light data={entities[l]} />)}
 		</div>
 	);
