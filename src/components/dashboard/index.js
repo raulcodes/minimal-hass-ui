@@ -7,7 +7,7 @@ import Weather from '../cards/weather/Weather';
 
 import { useEffect, useState } from 'preact/hooks';
 
-const Dashboard = ({ entities, config }) => {
+const Dashboard = ({ entities, connection }) => {
   const switchR = new RegExp('^switch\.');
   const lightR = new RegExp('^light\.');
   
@@ -21,7 +21,7 @@ const Dashboard = ({ entities, config }) => {
 	return(
 		<div class={style.home}>
 			<Weather data={entities['weather.home']} />
-      {switches.map(s => <Switch data={entities[s]} />)}
+      {switches.map(s => <Switch data={entities[s]} connection={connection} />)}
       {lights.map(l => <Light data={entities[l]} />)}
 		</div>
 	);

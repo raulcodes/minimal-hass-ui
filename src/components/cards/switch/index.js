@@ -1,15 +1,17 @@
 import { h } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { randomIntFromInterval } from '../../../utils/utils';
+import { callService } from 'home-assistant-js-websocket';
 
 import Name from './Name';
 import Toggle from './Toggle';
 
 import cardStyle from '../cardStyles.css';
 
-const Switch = ({ data }) => {
-  const borderRadius = useMemo(() => `cardB${randomIntFromInterval(1, 4)}`, [data]);
+const Switch = ({ connection, data }) => {
+  const borderRadius = useMemo(() => `cardB${randomIntFromInterval(1, 4)}`, []);
 
+  const [entityId, setEntityId] = useState('');
   const [state, setState] = useState(false);
   const [name, setName] = useState('');
   useEffect(() => {
@@ -27,11 +29,19 @@ const Switch = ({ data }) => {
     } else {
       setName(entity_id);
     }
+    setEntityId(entity_id);
   }, []);
+
+  const toggleSwitch = () => {
+    setState(s => !s);
+    callService(connection, "homeassistant", "toggle", {
+      entity_id: entityId,
+    });
+  };
 
   return(
     <div
-      onClick={() => setState(s => !s)}
+      onClick={toggleSwitch}
       class={`
         ${cardStyle.card11} 
         ${state ? cardStyle.on : cardStyle.off}
