@@ -22,7 +22,7 @@ const Dashboard = ({ entities, connection }) => {
 		<div class={style.home}>
 			<Weather data={entities['weather.home']} />
       {switches.map(s => <Switch data={entities[s]} connection={connection} />)}
-      {lights.map(l => <Light data={entities[l]} />)}
+      {lights.map(l => <Light data={entities[l]} connection={connection} />)}
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 import { h } from 'preact';
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import { randomIntFromInterval } from '../../../utils/utils';
+import { callService } from 'home-assistant-js-websocket';
 
 import Brightness from './Brightness';
 import LightIcon from './LightIcon';
@@ -8,44 +9,34 @@ import Name from './Name';
 
 import cardStyle from '../cardStyles.css';
 
-const Light = ({ data }) => {
+const Light = ({ data, connection }) => {
   const borderRadius = useMemo(() => `cardB${randomIntFromInterval(1, 4)}`, []);
+  const { entity_id, state, attributes: { brightness, friendly_name } } = data;
 
-  const [brightness, setBrightness] = useState(0);
-  const [state, setState] = useState(false);
-  const [name, setName] = useState('');
-  useEffect(() => {
-    const { entity_id, state, attributes: { brightness, friendly_name } } = data;
-    switch(state) {
-      case 'off':
-        setState(false);
-        break;
-      case 'on':
-        setState(true);
-        const brightnessPercent = Math.floor((brightness / 255) * 100);
-        setBrightness(brightnessPercent);
-        break;
+  const [currentBrightness, setBrightness] = useState(brightness || 0);
+  const [currentState, setState] = useState(state === 'on' ? true : false);
+  const handleSlider = e => {
+    setBrightness(e.target.value);
+    if (e.target.value == 0) {
+      setState(false);
+    } else if (currentState === false && e.target.value !== 0) {
+      setState(true);
     }
-    if (friendly_name) {
-      setName(friendly_name);
-    } else {
-      setName(entity_id);
-    }
-  }, [data]);
-
+  }
+  const sendBrightness = e => callService(connection, "light", "turn_on", { "brightness": e.target.value }, { entity_id })
   return(
     <div
-      onClick={() => setState(s => !s)}
       class={`
         ${cardStyle.card11} 
         ${cardStyle[borderRadius]}
       `}
-      style={brightness && state ? { background: `linear-gradient(0deg, #14151a ${brightness}%, #5c7985 1%)` } : null}
+      style={currentBrightness && currentState ? { background: `linear-gradient(0deg, #14151a ${(currentBrightness / 255) * 100}%, #5c7985 1%)` } : null}
     >
+      <input type="range" min={0} max={255} value={currentBrightness} onInput={handleSlider} onMouseUp={sendBrightness}/>
       <svg viewBox='0 0 50 50'>
-        <Name>{name}</Name>
-        {state ? <Brightness>{brightness}%</Brightness> : null }
-        <LightIcon state={state} />
+        <Name>{friendly_name || entity_id}</Name>
+        {currentState ? <Brightness>{Math.floor((currentBrightness / 255) * 100)}%</Brightness> : null }
+        <LightIcon state={currentState} />
       </svg>
     </div>
   )
