@@ -1,6 +1,6 @@
 {
   "name": "hass-minimal-ui",
-  "short_name": "hass-minimal-ui",
+  "short_name": "Hass",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
