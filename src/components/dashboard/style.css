@@ -1,11 +1,30 @@
+.blueBoy {
+  --background: #5c7985;
+  --card-background: #FFFFFF;
+  --main: #14151a;
+  --text: #1b2326;
+  --accent: #005472;
+  --accent-light: #80b1be;
+}
+
+.garden {
+	--background: #F2F8F8;
+	--card-background: #FFFFFF;
+	--main: #2A6364;
+	--text: #182634;
+	--accent: #CCE376;
+	--accent-light: #2A6364;
+}
+
 .app {
-	height: 100vh;
+  height: 100vh;
+	background: var(--background);
 }
 
 .home {
-	padding: 80px 20px;
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+  padding: 80px 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }

@@ -1,14 +1,18 @@
 .weatherState {
   font-size: 25%;
-  fill: var(--accent-light);
+  fill: var(--background);
 }
 
 .currentTemp {
   font-size: 70%;
-  fill: var(--accent-light);
+  fill: var(--background);
 }
 
 .currentHumidity {
   font-size: 25%;
-  fill: var(--accent-light);
+  fill: var(--background);
+}
+
+.weather {
+  background: var(--main);
 }

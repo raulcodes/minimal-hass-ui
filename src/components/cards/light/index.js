@@ -30,7 +30,7 @@ const Light = ({ data, connection }) => {
         ${cardStyle.card11} 
         ${cardStyle[borderRadius]}
       `}
-      style={currentBrightness && currentState ? { background: `linear-gradient(0deg, #14151a ${(currentBrightness / 255) * 100}%, #5c7985 1%)` } : null}
+      style={currentBrightness && currentState ? { background: `linear-gradient(0deg, var(--accent) ${(currentBrightness / 255) * 100}%, var(--card-background) 1%)` } : null}
     >
       <input type="range" min={0} max={255} value={currentBrightness} onInput={handleSlider} onMouseUp={sendBrightness}/>
       <svg viewBox='0 0 50 50'>

@@ -1,20 +1,10 @@
-:root {
-	--background: #5c7985;
-	--main: #14151a;
-	--text: #1b2326;
-	--accent: #005472;
-	--accent-light: #80b1be;
-}
-
 html, body {
 	height: 100%;
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background-color: var(--background);
 	font-family: 'Helvetica Neue', arial, sans-serif;
 	font-weight: 400;
-	color: var(--text);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

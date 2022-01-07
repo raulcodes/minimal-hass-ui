@@ -13,13 +13,15 @@ const App = () => {
 	const [connection, setConnection] = useState({});
 
 	return(
-		<div class={style.app}>
-			<Router>
-				<Home  path="/" connection={connection} />
-				<Icons path="/icons" />
-				<Auth  path="/auth" setConnection={setConnection} />
-				<MockDashboard path="/mock" />
-			</Router>
+		<div class={style.garden}>
+			<div class={style.app}>
+				<Router>
+					<Home  path="/" connection={connection} />
+					<Icons path="/icons" />
+					<Auth  path="/auth" setConnection={setConnection} />
+					<MockDashboard path="/mock" />
+				</Router>
+			</div>
 		</div>
 	);
 };

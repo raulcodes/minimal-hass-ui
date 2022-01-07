@@ -29,7 +29,7 @@ const Switch = ({ connection, data }) => {
     >
       <svg viewBox='0 0 50 50'>
         <Toggle state={currentState} />
-        <Name name={friendly_name || entity_id} state={currentState} />
+        <Name name={friendly_name || entity_id} />
       </svg>
     </div>
   )

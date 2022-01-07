@@ -23,10 +23,10 @@ const Weather = ({ data }) => {
   const state = data?.state;
   const temp = data?.attributes?.temperature;
   const humidity = data?.attributes?.humidity;
-  const borderRadius = useMemo(() => `cardB${randomIntFromInterval(1, 4)}`, [data]);
+  const borderRadius = useMemo(() => `cardB${randomIntFromInterval(1, 4)}`, []);
 
   return(
-    <div class={`${cardStyle.card11} ${cardStyle.on} ${cardStyle[borderRadius]}`}>
+    <div class={`${cardStyle.card11} ${style.weather} ${cardStyle[borderRadius]}`}>
       <svg viewBox='0 0 50 50'>
         <svg x="5" y="5">
           <WeatherIcon type={state} size="40%" />
