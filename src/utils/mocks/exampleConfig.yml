@@ -1,0 +1,82 @@
+title: Home
+views:
+  - path: default_view
+    title: Living Room
+    theme: noctis-solarized
+    icon: hass:lightbulb
+    badges: []
+    cards:
+      - type: entity
+        entity: binary_sensor.multisensor_motion
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: '## Living Room Lights'
+            theme: noctis-solarized
+          - type: grid
+            cards:
+              - type: light
+                entity: light.side_table
+                icon: hass:lamp
+              - type: light
+                entity: light.floor_lamp
+                icon: hass:floor-lamp
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.turntable_lamp
+                icon: hass:lava-lamp
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.grow_light
+                icon: hass:flower
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: '## Bedroom Lights'
+            theme: noctis-solarized
+          - type: grid
+            cards:
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.rauls_lamp
+                icon: hass:lamp
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.brookes_lamp
+                name: Brooke's lamp
+                icon: hass:lamp
+            columns: 2
+      - type: vertical-stack
+        cards:
+          - type: weather-forecast
+            entity: weather.home
+            theme: noctis-solarized
+          - type: sensor
+            entity: sensor.multisensor_temperature_measurement
+            graph: line
+            name: Living Room Temperature
+          - type: media-control
+            entity: media_player.raul_s_tv
+  - title: Automations
+    path: detailed
+    theme: noctis
+    type: panel
+    icon: hass:robot
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: automation.new_automation
+          - entity: automation.nighttime_grow_light
+          - entity: automation.living_room_lights_motion
+  - title: Remote
+    path: remote
+    icon: hass:remote
+    theme: noctis-solarized
+    badges: []
+    cards: []
