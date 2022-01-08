@@ -1,0 +1,10 @@
+FROM node:16.13.1-alpine
+
+RUN apk add --update npm
+WORKDIR /app
+
+COPY package.json ./
+RUN npm install
+COPY . .
+
+CMD [ "npm", "run", "dev" ]
