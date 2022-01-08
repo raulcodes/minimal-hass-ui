@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import Dashboard from '../../components/dashboard';
 
 import mockEntities from '../../utils/mocks/entities';

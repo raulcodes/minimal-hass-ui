@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { randomIntFromInterval } from '../../../utils/utils';
 import { callService } from 'home-assistant-js-websocket';

@@ -1,4 +1,4 @@
-import { Fragment, h } from 'preact';
+import { Fragment } from 'preact';
 import style from './style';
 
 const Toggle = ({ state }) => (

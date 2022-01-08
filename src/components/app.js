@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { Router } from 'preact-router';
 import style from './dashboard/style.css';

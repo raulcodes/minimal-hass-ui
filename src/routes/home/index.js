@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import { subscribeEntities } from "home-assistant-js-websocket";

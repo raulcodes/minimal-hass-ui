@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import style from './iconStyle.css';
 
 const Lightning = ({ size }) => (

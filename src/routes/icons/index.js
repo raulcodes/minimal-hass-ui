@@ -1,5 +1,3 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
 import style from './style';
 
 import WeatherIcon from '../../components/cards/weather/icons';

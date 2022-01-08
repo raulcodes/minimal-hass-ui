@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import style from './style.css';
 
 import Light from '../cards/light';
