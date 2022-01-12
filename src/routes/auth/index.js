@@ -1,6 +1,6 @@
 import { useState, useEffect } from "preact/hooks";
 // import { route } from "preact-router";
-// import { getAuth, createConnection } from "home-assistant-js-websocket";
+import { getAuth, createConnection } from "home-assistant-js-websocket";
 import { getHassUrl, setHassUrl } from "../../utils/localStorage";
 import style from "./style";
 
@@ -36,7 +36,7 @@ const Auth = ({ setConnection }) => {
 
   const submitInput = (e) => {
     e.preventDefault();
-    // getAuth({ hassUrl: hostUrl, saveTokens, loadTokens });
+    getAuth({ hassUrl: hostUrl, saveTokens, loadTokens });
   };
 
   return (
