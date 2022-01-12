@@ -1,5 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
-// import { route } from "preact-router";
+import { route } from "preact-router";
 import { getAuth, createConnection } from "home-assistant-js-websocket";
 import { getHassUrl, setHassUrl } from "../../utils/localStorage";
 import style from "./style";
@@ -12,32 +12,43 @@ const Auth = ({ setConnection }) => {
 
   const [hostUrl, setHostUrl] = useState(getHassUrl() || "");
 
-  useEffect(() => {
-    const estConnection = () => {
-      try {
-        getAuth({ saveTokens, loadTokens })
-          .then((auth) => {
-            setHassUrl(auth.data.hassUrl);
-            alert(auth.data.hassUrl);
-            createConnection({ auth })
-              .then((connection) => {
-                setConnection(connection);
-              })
-              .catch((err) => alert(err));
-            window.location.assign('/');
-          })
-          .catch((err) => alert(err));
-      } catch (err) {
-        alert(err);
-      }
+  const estConnection = () => {
+    try {
+      getAuth({ saveTokens, loadTokens })
+        .then((auth) => {
+          setHassUrl(auth.data.hassUrl);
+          createConnection({ auth })
+            .then((connection) => {
+              setConnection(connection);
+            })
+            .catch((err) => alert(err));
+          route('/');
+        })
+        .catch((err) => alert(err));
+    } catch (err) {
+      alert(err);
     }
+  }
 
-    estConnection();
-  }, []);
+  useEffect(() => estConnection(), []);
 
   const submitInput = (e) => {
     e.preventDefault();
-    getAuth({ hassUrl: hostUrl, saveTokens, loadTokens });
+    try {
+      getAuth({ hassUrl: hostUrl, saveTokens, loadTokens })
+        .then((auth) => {
+          setHassUrl(auth.data.hassUrl);
+          createConnection({ auth })
+            .then((connection) => {
+              setConnection(connection);
+            })
+            .catch((err) => alert(err));
+          route('/');
+        })
+        .catch((err) => alert(err));
+    } catch (err) {
+      alert(err);
+    }
   };
 
   return (
