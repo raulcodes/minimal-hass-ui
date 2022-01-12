@@ -18,16 +18,17 @@ const Auth = ({ setConnection }) => {
         getAuth({ saveTokens, loadTokens })
           .then((auth) => {
             setHassUrl(auth.data.hassUrl);
+            alert(auth.data.hassUrl);
             createConnection({ auth })
               .then((connection) => {
                 setConnection(connection);
               })
-              .catch((err) => console.error(err));
+              .catch((err) => alert(err));
             window.location.assign('/');
           })
-          .catch((err) => console.error(err));
+          .catch((err) => alert(err));
       } catch (err) {
-        console.error(err);
+        alert(err);
       }
     }
 
