@@ -1,5 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
-// import { route } from "preact-router";
+import { route } from "preact-router";
 import { getAuth, createConnection } from "home-assistant-js-websocket";
 import { getHassUrl, setHassUrl } from "../../utils/localStorage";
 import style from "./style";
@@ -12,27 +12,27 @@ const Auth = ({ setConnection }) => {
 
   const [hostUrl, setHostUrl] = useState(getHassUrl() || "");
 
-  // useEffect(() => {
-  //   const estConnection = () => {
-  //     try {
-  //       getAuth({ saveTokens, loadTokens })
-  //         .then((auth) => {
-  //           setHassUrl(auth.data.hassUrl);
-  //           createConnection({ auth })
-  //             .then((connection) => {
-  //               setConnection(connection);
-  //             })
-  //             .catch((err) => console.error(err));
-  //           route("/");
-  //         })
-  //         .catch((err) => console.error(err));
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   }
+  useEffect(() => {
+    const estConnection = () => {
+      try {
+        getAuth({ saveTokens, loadTokens })
+          .then((auth) => {
+            setHassUrl(auth.data.hassUrl);
+            createConnection({ auth })
+              .then((connection) => {
+                setConnection(connection);
+              })
+              .catch((err) => console.error(err));
+            route("/");
+          })
+          .catch((err) => console.error(err));
+      } catch (err) {
+        console.error(err);
+      }
+    }
 
-  //   estConnection();
-  // }, []);
+    estConnection();
+  }, []);
 
   const submitInput = (e) => {
     e.preventDefault();
