@@ -17,6 +17,7 @@ const Auth = ({ setConnection }) => {
       getAuth({ saveTokens, loadTokens })
         .then((auth) => {
           setHassUrl(auth.data.hassUrl);
+          alert(JSON.stringify(auth));
           createConnection({ auth })
             .then((connection) => {
               setConnection(connection);
@@ -38,6 +39,7 @@ const Auth = ({ setConnection }) => {
       getAuth({ hassUrl: hostUrl, saveTokens, loadTokens })
         .then((auth) => {
           setHassUrl(auth.data.hassUrl);
+          alert(JSON.stringify(auth));
           createConnection({ auth })
             .then((connection) => {
               setConnection(connection);
