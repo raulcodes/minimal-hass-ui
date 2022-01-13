@@ -59,7 +59,8 @@ const Auth = ({ setConnection }) => {
         <h2>Enter the host you would like to connect to</h2>
         <form class={style.input} onSubmit={submitInput}>
           <input
-            autoComplete="url"
+            autoComplete="off"
+            type="url"
             class={style.hostInput}
             onChange={(e) => setHostUrl(e.target.value)}
             value={hostUrl}
