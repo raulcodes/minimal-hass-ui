@@ -10,47 +10,35 @@ const Auth = ({ setConnection }) => {
   const loadTokens = () =>
     JSON.parse(window.localStorage.getItem("hass-minimal-ui/auth"));
 
-  const [hostUrl, setHostUrl] = useState(getHassUrl() || "");
+  const [hostUrl, setHostUrl] = useState(getHassUrl());
 
-  const estConnection = () => {
-    try {
-      getAuth({ saveTokens, loadTokens })
-        .then((auth) => {
-          setHassUrl(auth.data.hassUrl);
-          alert(JSON.stringify(auth));
-          createConnection({ auth })
-            .then((connection) => {
-              setConnection(connection);
+  useEffect(() => {
+    const estConnection = () => {
+        try {
+          getAuth({ saveTokens, loadTokens })
+            .then((auth) => {
+              setHassUrl(auth.data.hassUrl);
+              // alert(JSON.stringify(auth));
+              createConnection({ auth })
+                .then((connection) => {
+                  setConnection(connection);
+                })
+                .catch((err) => console.log(err));
+              route("/");
             })
-            .catch((err) => alert(err));
-          route('/');
-        })
-        .catch((err) => alert(err));
-    } catch (err) {
-      alert(err);
-    }
-  }
-
-  useEffect(() => estConnection(), []);
+            .catch((err) => console.log(err));
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    estConnection();
+  }, []);
 
   const submitInput = (e) => {
     e.preventDefault();
-    try {
-      getAuth({ hassUrl: hostUrl, saveTokens, loadTokens })
-        .then((auth) => {
-          setHassUrl(auth.data.hassUrl);
-          alert(JSON.stringify(auth));
-          createConnection({ auth })
-            .then((connection) => {
-              setConnection(connection);
-            })
-            .catch((err) => alert(err));
-          route('/');
-        })
-        .catch((err) => alert(err));
-    } catch (err) {
-      alert(err);
-    }
+    console.log(hostUrl);
+    getAuth({ hassUrl: hostUrl })
+      .catch(err => console.log(err));
   };
 
   return (
@@ -62,7 +50,7 @@ const Auth = ({ setConnection }) => {
             autoComplete="off"
             type="url"
             class={style.hostInput}
-            onChange={(e) => setHostUrl(e.target.value)}
+            onInput={(e) => setHostUrl(e.target.value)}
             value={hostUrl}
           ></input>
           <button class={style.hostSubmit} type="submit">
