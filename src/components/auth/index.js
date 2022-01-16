@@ -1,5 +1,4 @@
 import { useState, useEffect } from "preact/hooks";
-import { route } from "preact-router";
 import { getAuth, createConnection } from "home-assistant-js-websocket";
 import { getHassUrl, setHassUrl } from "../../utils/localStorage";
 import style from "./style";
@@ -24,7 +23,6 @@ const Auth = ({ setConnection }) => {
                   setConnection(connection);
                 })
                 .catch((err) => console.log(err));
-              route("/");
             })
             .catch((err) => console.log(err));
         } catch (err) {
