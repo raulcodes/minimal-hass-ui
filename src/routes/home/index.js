@@ -9,10 +9,19 @@ const Home = () => {
 	const [connection, setConnection] = useState({});
 	const [entities, setEntities] = useState({});
 	if (Object.keys(connection).length === 0) {
-		return <Auth setConnection={setConnection} />
+		return (
+			<Fragment>
+				<p>{JSON.stringify(connection)}</p>
+				<Auth setConnection={setConnection} />
+			</Fragment>);
 	} else {
 		subscribeEntities(connection, (ent) => setEntities(ent));
-		return <Dashboard entities={entities} connection={connection} />
+		return (
+			<Fragment>
+				<p>{JSON.stringify(entities)}</p>
+				<Dashboard entities={entities} connection={connection} />
+			</Fragment>
+		);
 	}
 };
 

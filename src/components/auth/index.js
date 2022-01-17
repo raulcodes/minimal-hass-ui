@@ -55,6 +55,8 @@ const Auth = ({ setConnection }) => {
             Submit
           </button>
         </form>
+        <p>hassUrl: {hostUrl}</p>
+        <p>tokens: {JSON.stringify(loadTokens())}</p>
       </div>
     </div>
   );
