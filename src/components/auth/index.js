@@ -11,33 +11,24 @@ const Auth = ({ setConnection }) => {
 
   const [hostUrl, setHostUrl] = useState(getHassUrl());
 
-  useEffect(() => {
-    const estConnection = () => {
-        try {
-          getAuth({ saveTokens, loadTokens })
-            .then((auth) => {
-              setHassUrl(auth.data.hassUrl);
-              // alert(JSON.stringify(auth));
-              createConnection({ auth })
-                .then((connection) => {
-                  setConnection(connection);
-                })
-                .catch((err) => console.log(err));
-            })
-            .catch((err) => console.log(err));
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    estConnection();
-  }, []);
-
   const submitInput = (e) => {
     e.preventDefault();
-    console.log(hostUrl);
     getAuth({ hassUrl: hostUrl })
       .catch(err => console.log(err));
   };
+
+  const checkConnection = () => {
+    getAuth({ saveTokens, loadTokens })
+      .then((auth) => {
+        setHassUrl(auth.data.hassUrl);
+        createConnection({ auth })
+          .then((connection) => {
+            setConnection(connection);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div class={style.auth}>
@@ -55,8 +46,9 @@ const Auth = ({ setConnection }) => {
             Submit
           </button>
         </form>
+        <button onClick={checkConnection}>Check for connection</button>
         <p>hassUrl: {hostUrl}</p>
-        <p>tokens: {JSON.stringify(loadTokens())}</p>
+        {/* <p>tokens: {JSON.stringify(loadTokens())}</p> */}
       </div>
     </div>
   );
