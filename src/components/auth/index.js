@@ -18,6 +18,7 @@ const Auth = ({ setConnection }) => {
   };
 
   const checkConnection = () => {
+    alert(window.location.search);
     getAuth({ saveTokens, loadTokens })
       .then((auth) => {
         setHassUrl(auth.data.hassUrl);
