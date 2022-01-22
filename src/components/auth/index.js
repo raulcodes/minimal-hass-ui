@@ -18,7 +18,13 @@ const Auth = ({ setConnection }) => {
   };
 
   const checkConnection = () => {
-    alert(window.location.search);
+    const queryString = window.location.search;
+    let params = new URLSearchParams(queryString);
+    alert(`
+      auth_callback: ${params.get('auth_callback')}\n
+      code: ${params.get('code')}\n
+      state: ${params.get('state')}\n
+    `);
     getAuth({ saveTokens, loadTokens })
       .then((auth) => {
         setHassUrl(auth.data.hassUrl);
@@ -48,6 +54,7 @@ const Auth = ({ setConnection }) => {
           </button>
         </form>
         <button onClick={checkConnection}>Check for connection</button>
+        <button onClick={() => window.location = '/'}>Clear search path</button>
         <p>hassUrl: {hostUrl}</p>
         {/* <p>tokens: {JSON.stringify(loadTokens())}</p> */}
       </div>
